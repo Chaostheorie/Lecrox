@@ -1,2 +1,7 @@
 # Lecrox
-A recoded version of VKS
+ The Recode version of VKS-Development
+
+- Better organisation
+- search function
+- better documentation
+- cleaner code
