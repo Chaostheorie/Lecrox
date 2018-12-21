@@ -3,25 +3,35 @@ from db_setup import init_db, db_session
 from forms import SnippetSearchForm, snippetForms
 from flask import flash, render_template, request, redirect
 from models import snippets
+import json
+from flask_user import *
 
 init_db()
+
 # functions
-def save_changes(snippet, form, new=False):
+@app.route("/add_snippet", methods=["Post"])
+def add_snippet():
     # Get data from form and assign it to the correct attributes
     # of the SQLAlchemy table object
-    snippet = snippets()
-
-    snippet.name = form.name
-    snippet.type = form.type
-    snippet.content = form.content
-    snippet.description = form.description
-
-    if new:
-        # Add the new album to the database
-        db_session.add(snippet)
-
+    values = list(request.form.values())
+    keys = list(request.form.keys())
+    new_snippet = {}
+    for i in range(len(keys)):
+        value = values[i]
+        key = keys[i]
+        new_snippet.update({key:value})
+    print(new_snippet)
+    snippet = snippets (
+    name = new_snippet["name"],
+    type = new_snippet["type"],
+    content = new_snippet["content"],
+    description = new_snippet["description"],
+    )
+    db_session.add(snippet)
     # commit the data to the database
     db_session.commit()
+    flash('Added successfully!')
+    return redirect(request.referrer or '/')
 
 # Routes
 @app.route('/', methods=['GET', 'POST'])
@@ -38,7 +48,7 @@ def search_results(search):
     search_string = search.data['search']
 
     if search.data['search'] == '':
-        qry = db_session.query(Album)
+        qry = db_session.query(snippets)
         results = qry.all()
 
     if not results:
@@ -50,16 +60,18 @@ def search_results(search):
 
 
 @app.route('/new_snippet', methods=['GET', 'POST'])
+@login_required
 def new_snippet():
     form = snippetForms(request.form)
     if request.method == 'POST' and form.validate():
-        # save the album
-        snippet = snippets()
-        save_changes(snippet, form, new=True)
+        # save the snippet
+
         flash('Snippet created successfully!')
         return redirect('/')
 
-    return render_template('new_snippet.html', form=form)
+    all_types = json.load(open("static/json/types.json", "r"))
+    print(all_types)
+    return render_template('new_snippet.html', types=all_types)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)

@@ -3,12 +3,31 @@
 <h2>New Album</h2>
 
 {% from "_formhelpers.html" import render_field %}
-<form method=post>
+<form action="/add_snippet" method=post>
     <dl>
-        {{ render_field(form.name) }}
-        {{ render_field(form.type) }}
-        {{ render_field(form.content) }}
-        {{ render_field(form.description) }}
+
+            <dt><label for="name">Name</label>
+            <dd><input name="name" type="text" required>
+
+            </dd>
+            <select name="type" required>
+            {% for type in types %}
+              <option value="{{ type }}"> {{ type }} </option>
+            {% endfor %}
+            </select>
+
+            <dt><label  for="content" name="content">Content</label>
+            <dd><input name="content" type="text" required>
+
+
+            </dd>
+
+
+            <dt><label for="description">Description</label>
+            <dd><input name="description" type="text" required>
+
+            </dd>
+
     </dl>
     <p><input type=submit value=Submit>
 </form>
