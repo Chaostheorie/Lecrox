@@ -10,6 +10,7 @@ init_db()
 
 # functions
 @app.route("/add_snippet", methods=["Post"])
+@login_required
 def add_snippet():
     # Get data from form and assign it to the correct attributes
     # of the SQLAlchemy table object
@@ -35,6 +36,7 @@ def add_snippet():
 
 # Routes
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
@@ -43,6 +45,7 @@ def index():
     return render_template('index.html', form=search)
 
 @app.route('/results')
+@login_required
 def search_results(search):
     results = []
     search_string = search.data['search']
