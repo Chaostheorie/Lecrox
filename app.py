@@ -8,7 +8,7 @@ class ConfigClass(object):
 	SQLALCHEMY_DATABASE_URI = 'sqlite:///static/database/lecrox_db.sqlite'
 	# Avoids SQLAlchemy warning (Can Help by Database Processing Debugging)
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	# *Not Secret* Secret Key (Not needed,but later for sessions implementation)
+	# *Not Secret* Secret Key 
 	SECRET_KEY = 'London Bridge is falling, my fair lady.'
 	# Flask-User settings
 	USER_APP_NAME = "Lecrox"
