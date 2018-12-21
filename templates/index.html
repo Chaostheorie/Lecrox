@@ -17,12 +17,16 @@
     </ul>
   {% endif %}
 {% endwith %}
-
 {% from "_formhelpers.html" import render_field %}
-    {% from "_formhelpers.html" import render_field %}
     <form method=post>
       <dl>
-        {{ render_field(form.select) }}
+        <p>
+        <select name="type" required>
+        {% for column in columns %}
+          <option value="{{ column }}"> {{ column }} </option>
+        {% endfor %}
+        </select>
+        </p>
         <p>
         {{ render_field(form.search) }}
       </dl>

@@ -41,24 +41,32 @@ def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
         return search_results(search)
-
-    return render_template('index.html', form=search)
+    all_columns = json.load(open("static/json/snippets_columns.json", "r"))
+    return render_template('index.html', form=search, columns=all_columns)
 
 @app.route('/results')
 @login_required
 def search_results(search):
     results = []
-    search_string = search.data['search']
-
+    values = list(request.form.values())
+    keys = list(request.form.keys())
+    input = {}
+    for i in range(len(keys)):
+        value = values[i]
+        key = keys[i]
+        input.update({key:value})
+    kwargs = {input["type"]:input["search"]}
+    results = snippets.query.filter_by(**kwargs).all()
     if search.data['search'] == '':
         qry = db_session.query(snippets)
         results = qry.all()
-
+        print("2")
     if not results:
         flash('No results found!')
         return redirect('/')
     else:
-        # display results
+        print("4")
+        results = snippets.query.filter_by(**kwargs).all()
         return render_template('results.html', results=results)
 
 

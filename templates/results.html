@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <link href="static/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h2><a href="/">Search Results</a></h2>
+    </header>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Content</th>
+        <th>Decription</th>
+      </tr>
+      <tr>
+        {% for result in results %}
+        <td> {{ result.name }} </td>
+        <td> {{ result.type }} </td>
+        <td> {{ result.content }} </td>
+        <td> {{ result.description }} </td>
+        {% endfor %}
+      </tr>
+      </table>
+  </body>
+</html>

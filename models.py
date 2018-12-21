@@ -1,10 +1,13 @@
 # db_creator.py
 from app import db
+from elasticsearch import Elasticsearch
+
+es = Elasticsearch()
 
 # Content tables
 class snippets(db.Model):
     __tablename__ = "snippets"
-
+    __searchable__ = ["name", "type", "content", "description"]
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     type = db.Column(db.String)
@@ -14,6 +17,7 @@ class snippets(db.Model):
 class plans(db.Model):
 # here will plans go
     __tablename__ = "plans"
+    __searchable__ = ["name"]
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
 

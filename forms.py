@@ -1,5 +1,5 @@
 # forms.py
-
+from elasticsearch import Elasticsearch
 from wtforms import Form, StringField, SelectField
 
 class SnippetSearchForm(Form):

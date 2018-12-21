@@ -8,15 +8,17 @@ class ConfigClass(object):
 	SQLALCHEMY_DATABASE_URI = 'sqlite:///static/database/lecrox_db.sqlite'
 	# Avoids SQLAlchemy warning (Can Help by Database Processing Debugging)
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	# *Not Secret* Secret Key 
+	# *Not Secret* Secret Key
 	SECRET_KEY = 'London Bridge is falling, my fair lady.'
 	# Flask-User settings
-	USER_APP_NAME = "Lecrox"
+	USER_APP_NAME = "Lecrox 0.1"
 	USER_ENABLE_EMAIL = False
 	USER_ENABLE_USERNAME = True
 	USER_ENABLE_CHANGE_USERNAME = True
 	USER_ENABLE_CHANGE_PASSWORD = True
 	USER_ENABLE_REGISTER = False
+	# Elasticsearch Config
+	ELASTICSEARCH_URL=http://localhost:9200
 
 # init of flask
 app = Flask(__name__)
@@ -26,7 +28,11 @@ app.config.from_object(__name__+'.ConfigClass')
 
 # init of apps
 db = SQLAlchemy(app)
+es = Elasticsearch()
 
+# Elasticsearch Config
+app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+    if app.config['ELASTICSEARCH_URL'] else None
 # Define the User Model
 class User(db.Model, UserMixin):
 	# User table
