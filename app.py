@@ -1,6 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import *
+from elasticsearch import Elasticsearch
 
 # Config class for Apps (flask_sqlalchemy, flask_user)
 class ConfigClass(object):
@@ -18,7 +19,7 @@ class ConfigClass(object):
 	USER_ENABLE_CHANGE_PASSWORD = True
 	USER_ENABLE_REGISTER = False
 	# Elasticsearch Config
-	ELASTICSEARCH_URL=http://localhost:9200
+	ELASTICSEARCH_URL="http://localhost:9200"
 
 # init of flask
 app = Flask(__name__)

@@ -5,6 +5,7 @@ from flask import flash, render_template, request, redirect
 from models import snippets
 import json
 from flask_user import *
+from search import add_to_index, remove_from_index, query_index
 
 init_db()
 
