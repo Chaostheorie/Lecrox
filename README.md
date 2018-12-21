@@ -5,3 +5,4 @@
 - search function
 - better documentation
 - cleaner code
+- not a official VKS build or version

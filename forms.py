@@ -2,9 +2,20 @@
 
 from wtforms import Form, StringField, SelectField
 
-class MusicSearchForm(Form):
-    choices = [('Artist', 'Artist'),
-                ('Album', 'Album'),
-               ('Publisher', 'Publisher')]
-    select = SelectField('Search for music:', choices=choices)
+class SnippetSearchForm(Form):
+    choices = [('name', 'name'),
+                ('type', 'type'),
+               ('content', 'content')]
+    select = SelectField('Search for snippets:', choices=choices)
     search = StringField('')
+
+class snippetForms(Form):
+    snippet_types = [('Praise', 'Praise'),
+                   ('Worship', 'Worship'),
+                   ('Gospel', 'Gospel'),
+                   ('Bible snippet', 'Bible Snippet')
+                   ]
+    name = StringField('Name')
+    type = SelectField('Type', choices=snippet_types)
+    content = StringField('Content')
+    description = StringField('Description')
