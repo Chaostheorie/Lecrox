@@ -1,8 +1,19 @@
 <doctype html>
+<html>
+<head>
 <title>New Album - Flask Music Database</title>
-<h2>New Album</h2>
-
-{% from "_formhelpers.html" import render_field %}
+<head>
+<body>
+<h2>New Snippet</h2>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 <form action="/add_snippet" method=post>
     <dl>
 
@@ -31,3 +42,5 @@
     </dl>
     <p><input type=submit value=Submit>
 </form>
+</body>
+</html>
