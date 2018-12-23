@@ -1,8 +1,6 @@
 # db_creator.py
 from app import db
-from elasticsearch import Elasticsearch
-
-es = Elasticsearch()
+from sqlalchemy_elasticquery import elastic_query
 
 # Content tables
 class snippets(db.Model):
@@ -24,4 +22,4 @@ class plans(db.Model):
 # create tables
 db.create_all()
 
-# Auth is made with flask_sqlalchemy, because flask_user specify that
+# Auth is made with flask_sqlalchemy, because flask_user specifys that
