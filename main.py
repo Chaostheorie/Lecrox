@@ -28,8 +28,8 @@ def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
         return search_results(search)
-    all_columns = json.load(open("static/json/snippets_columns.json", "r"))
-    return render_template('index.html', form=search, columns=all_columns)
+
+    return render_template('index.html')
 
 @app.route('/results')
 @login_required

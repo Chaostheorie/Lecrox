@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% block app_content %}
-{% from "_formhelpers.html" import render_field %}
     <p>
       Snippet Search
-    <form method=post>
-      <dl>
-        <p>
-        {{ render_field(form.search) }}
-      </dl>
-      <p><input type=submit value=Search>
-    </form>
     </p>
+    <form method=post>
+      <p>
+        <input type="text" name="search" placeholder="Type to Search">  <input type=submit value=Search>
+      </p>
+    </form>
 {% endblock %}
