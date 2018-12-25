@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+Lecrox
+{% endblock %}
+
+{% block head %}
+  <link href="static/style.css" rel="stylesheet">
+  <h2 class="header_main" style="font-size: 1.5vw;" > Lecrox </h2>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  {% block app_content %}{% endblock %}
+{% endblock %}

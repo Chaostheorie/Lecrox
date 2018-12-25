@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Search Results</title>
-    <link href="static/style.css" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <h2><a href="/">Search Results</a></h2>
-    </header>
+{% extends "base.html" %}
+{% }
+    <p>
+    <span style="font-size: 1vw;"> Found total {{ total }} snippets matching the search "{{ search }}":</span>
+    </p>
+    <p>
     <table>
       <tr>
         <th>Name</th>
@@ -16,14 +11,15 @@
         <th>Content</th>
         <th>Decription</th>
       </tr>
-      <tr>
         {% for result in results %}
+      <tr>
         <td> {{ result.name }} </td>
         <td> {{ result.type }} </td>
         <td> {{ result.content }} </td>
         <td> {{ result.description }} </td>
-        {% endfor %}
       </tr>
+        {% endfor %}
       </table>
+      </p>
   </body>
 </html>

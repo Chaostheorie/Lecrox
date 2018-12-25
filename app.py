@@ -2,6 +2,7 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from flask_user import *
 from elasticsearch import Elasticsearch
+from flask_bootstrap import Bootstrap
 
 # Config class for Apps (flask_sqlalchemy, flask_user)
 class ConfigClass(object):
@@ -31,3 +32,4 @@ app.config.from_object(__name__+'.ConfigClass')
 db = SQLAlchemy(app)
 app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
 	if app.config['ELASTICSEARCH_URL'] else None
+Bootstrap = Bootstrap(app)

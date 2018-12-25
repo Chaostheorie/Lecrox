@@ -14,7 +14,7 @@ div {
 .underline {
 	text-decoration: underline;
 }
-header {
+.header_main {
 	background-color: #fc4445;
 	color:white;
 	text-align:center;
@@ -28,7 +28,7 @@ header {
 	text-decoration: none;
 }
 
-header:hover {
+.header_main:hover {
 	background-color: #fc2b2c;
 }
 

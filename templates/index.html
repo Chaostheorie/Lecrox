@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Start</title>
-  </head>
-  <body>
-    <header>
-      <h2>Lecrox</h2>
-    </header>
-    {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
+{% extends "base.html" %}
+{% block app_content %}
 {% from "_formhelpers.html" import render_field %}
     <form method=post>
       <dl>
@@ -34,5 +17,4 @@
     </form>
     <footer>
     <a href="{{ url_for('.new_snippet') }}"> New Snippet </a></footer>
-  </body>
-</html>
+{% endblock %}

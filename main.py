@@ -55,28 +55,19 @@ def search_results(search):
         value = values[i]
         key = keys[i]
         input.update({key:value})
-    kwargs = {input["type"]:input["search"]}
-    print(kwargs)
-    for snippet in snippets.query.all():
-        add_to_index('snippets_index', snippet)
-    res = str(query_index(snippets_index, input["search"], 1, 100)[0])[1]
-    result = []
-    for i in len(id):
-        res_1 = snippets.query.filter_by(id=id[i]).all()
-        result.append(res_1)
-
+    snippets.reindex()
+    results = query, total = snippets.search(input["search"], 1, 100)
     if search.data['search'] == '':
         qry = db_session.query(snippets)
         results = qry.all()
-        return render_template("results.html", results=results)
+        return render_template("results.html", results=results, total=len(snippets.query.all()))
 
-    if not result:
+    if not results:
         flash('No results found!')
         return redirect('/')
 
     else:
-        results = snippets.query.filter_by(**kwargs).all()
-        return render_template('results.html', results=result)
+        return render_template('results.html', results=query, total=total, search=input["search"])
 
 @app.route('/new_snippet', methods=['GET', 'POST'])
 @login_required
