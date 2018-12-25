@@ -2,10 +2,10 @@ from app import app
 from db_setup import init_db, db_session
 from forms import SnippetSearchForm, snippetForms
 from flask import flash, render_template, request, redirect
-from models import snippets
+from models import *
 import json
 from flask_user import *
-from search import add_to_index, remove_from_index, query_index
+from search import *
 
 init_db()
 
@@ -48,7 +48,6 @@ def index():
 @app.route('/results')
 @login_required
 def search_results(search):
-    results = []
     values = list(request.form.values())
     keys = list(request.form.keys())
     input = {}
@@ -57,19 +56,27 @@ def search_results(search):
         key = keys[i]
         input.update({key:value})
     kwargs = {input["type"]:input["search"]}
-    results = snippets.query.filter_by(**kwargs).all()
+    print(kwargs)
+    for snippet in snippets.query.all():
+        add_to_index('snippets_index', snippet)
+    res = str(query_index(snippets_index, input["search"], 1, 100)[0])[1]
+    result = []
+    for i in len(id):
+        res_1 = snippets.query.filter_by(id=id[i]).all()
+        result.append(res_1)
+
     if search.data['search'] == '':
         qry = db_session.query(snippets)
         results = qry.all()
-        print("2")
-    if not results:
+        return render_template("results.html", results=results)
+
+    if not result:
         flash('No results found!')
         return redirect('/')
-    else:
-        print("4")
-        results = snippets.query.filter_by(**kwargs).all()
-        return render_template('results.html', results=results)
 
+    else:
+        results = snippets.query.filter_by(**kwargs).all()
+        return render_template('results.html', results=result)
 
 @app.route('/new_snippet', methods=['GET', 'POST'])
 @login_required
