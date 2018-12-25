@@ -28,7 +28,6 @@ def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
         return search_results(search)
-
     return render_template('index.html')
 
 @app.route('/results')
