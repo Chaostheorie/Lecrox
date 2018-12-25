@@ -1,20 +1,14 @@
 {% extends "base.html" %}
 {% block app_content %}
 {% from "_formhelpers.html" import render_field %}
+    <p>
+      Snippet Search
     <form method=post>
       <dl>
-        <p>
-        <select name="type" required>
-        {% for column in columns %}
-          <option value="{{ column }}"> {{ column }} </option>
-        {% endfor %}
-        </select>
-        </p>
         <p>
         {{ render_field(form.search) }}
       </dl>
       <p><input type=submit value=Search>
     </form>
-    <footer>
-    <a href="{{ url_for('.new_snippet') }}"> New Snippet </a></footer>
+    </p>
 {% endblock %}

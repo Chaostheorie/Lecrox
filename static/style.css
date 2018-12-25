@@ -6,6 +6,7 @@ html {
 	position: relative;
 	min-height: 100%;
 	text-decoration: none;
+	line-height: 0.2vw;
 }
 div {
 	text-decoration: none;
@@ -22,11 +23,10 @@ div {
 	border-bottom-style:solid;
 	border-bottom-width:0.3vw;
 	border-top-width:0.3vw;
-	margin: auto;
 	padding-top: 0.3vw;
 	padding-bottom: 0.3vw;
 	border: 3vw;
-	border-radius: 0.2vw;
+	border-radius: 0.3vw;
 	text-decoration: none;
 }
 

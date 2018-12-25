@@ -10,30 +10,16 @@ from search import *
 init_db()
 
 # functions
-@app.route("/add_snippet", methods=["Post"])
-@login_required
-def add_snippet():
-    # Get data from form and assign it to the correct attributes
-    # of the SQLAlchemy table object
+
+def make_dict(request):
     values = list(request.form.values())
     keys = list(request.form.keys())
-    new_snippet = {}
+    input = {}
     for i in range(len(keys)):
         value = values[i]
         key = keys[i]
-        new_snippet.update({key:value})
-    print(new_snippet)
-    snippet = snippets (
-    name = new_snippet["name"],
-    type = new_snippet["type"],
-    content = new_snippet["content"],
-    description = new_snippet["description"],
-    )
-    db_session.add(snippet)
-    # commit the data to the database
-    db_session.commit()
-    flash('Added successfully!')
-    return redirect(request.referrer or '/')
+        input.update({key:value})
+    return input
 
 # Routes
 @app.route('/', methods=['GET', 'POST'])
@@ -48,13 +34,7 @@ def index():
 @app.route('/results')
 @login_required
 def search_results(search):
-    values = list(request.form.values())
-    keys = list(request.form.keys())
-    input = {}
-    for i in range(len(keys)):
-        value = values[i]
-        key = keys[i]
-        input.update({key:value})
+    input = make_dict(request)
     snippets.reindex()
     results = query, total = snippets.search(input["search"], 1, 100)
     if search.data['search'] == '':
