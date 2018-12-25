@@ -30,34 +30,10 @@ div {
 
 .header_main:hover {
 	background-color: #fc2b2c;
+	text-decoration: none;
+	color: gray;
 }
 
-#term_name {
-	background-color:#9ebaa0;
-	color:white;text-align:center;
-	font-size:1.3em;
-	border-top-style:solid;
-	border-bottom-style:solid;
-	display: inline-block;
-}
-
-#term_date {
-	background-color:#9ebaa0;
-	color:white;text-align:center;
-	font-size: 75%;
-	border-top-style:solid;
-	border-bottom-style:solid;
-	display: inline-block;
-}
-
-#term_desc {
-	background-color:#adc5af;
-	color:white;
-	text-align:center;
-	border-top-style:solid;
-	border-bottom-style:solid;
-	display: inline-block;
-}
 /* button should be centered and not at the left */
 .button {
 	background-color: #FC4445;
@@ -73,22 +49,6 @@ div {
 	border-top-width: 0.2vw;
 	display: inline-block;
 	width: 49.1vw;
-}
-
-.button_copy {
-	background-color: #FC4445;
-	color:white;
-	text-decoration: none;
-	text-align:center;
-	font-size:2vw;
-	border-top-style:solid;
-	border-bottom-style:solid;
-	margin-bottom:0px;
-	margin-top:0.3vw;
-	border-bottom-width:0.3vw;
-	border-top-width: 0.2vw;
-	display: inline-block;
-	width: 49vw;
 }
 
 .button:visited	{
@@ -117,6 +77,7 @@ footer {
 	width: 100vw;
 	overflow: hidden;
 	text-decoration:none;
+	color: white;
 }
 
 table, th, td

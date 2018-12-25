@@ -1,15 +1,22 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-Lecrox
 {% endblock %}
 
 {% block head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="static/style.css" rel="stylesheet">
-  <h2 class="header_main" style="font-size: 1.5vw;" > Lecrox </h2>
 {% endblock %}
 
 {% block content %}
+<header class="header_main" style="color: white; 	text-decoration: none;" >
+  <a href="/"> Lecrox </a>
+</header>
+
 <div class="container">
   {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -20,5 +27,6 @@ Lecrox
       </ul>
     {% endif %}
   {% endwith %}
-  {% block app_content %}{% endblock %}
+  {% block app_content %}
+  {% endblock %}
 {% endblock %}
