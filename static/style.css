@@ -20,10 +20,13 @@ div {
 	text-align:center;
 	border-top-style:solid;
 	border-bottom-style:solid;
-	margin-bottom:0px;
-	margin-top:8px;
-	border-bottom-width:3px;
-	border-top-width:3px;
+	border-bottom-width:0.3vw;
+	border-top-width:0.3vw;
+	margin: auto;
+	padding-top: 0.3vw;
+	padding-bottom: 0.3vw;
+	border: 3vw;
+	border-radius: 0.2vw;
 	text-decoration: none;
 }
 
