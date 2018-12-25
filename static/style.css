@@ -18,7 +18,6 @@ div {
 	background-color: #fc4445;
 	color:white;
 	text-align:center;
-	font-size:1.5vw;
 	border-top-style:solid;
 	border-bottom-style:solid;
 	margin-bottom:0px;
@@ -40,7 +39,6 @@ div {
 	color:white;
 	text-decoration: none;
 	text-align:center;
-	font-size:2vw;
 	border-top-style:solid;
 	border-bottom-style:solid;
 	margin-bottom:0px;
@@ -73,7 +71,6 @@ footer {
 	bottom: 0;
 	background-color: #FC4445;
 	color:white;
-	font-size:0.8vw;
 	width: 100vw;
 	overflow: hidden;
 	text-decoration:none;
@@ -82,27 +79,5 @@ footer {
 
 table, th, td
 {
-	    border: 0.2vw solid #fc4445;
-			font-size: 1vw:
-
+	    border:  solid #fc4445;
 }
-
-.grid-container {
-	display: grid;
-	grid-template-columns: 4;
-}
-.grid-container_seki {
-  display: grid;
-  grid-template-columns: auto auto;
-}
-.grid-item_top {
-  background-color: #9ebaa0;
-  font-size: 1.5vw;
-  text-align: center;
-	margin: 3px;
-}
-
-.grid-item_bottom {
-  font-size: 1vw;
-  text-align: center;
-  }
