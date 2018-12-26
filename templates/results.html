@@ -2,24 +2,34 @@
 {% block app_content %}
 
     <p>
-     Found total {{ total }} snippets matching the search "{{ search }}":
+     Es wurden insgesamt {{ total }} Ergebnisse gefunden:
     </p>
     <p>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Content</th>
-        <th>Decription</th>
-      </tr>
-        {% for result in results %}
-      <tr>
-        <td> {{ result.name }} </td>
-        <td> {{ result.type }} </td>
-        <td> {{ result.content }} </td>
-        <td> {{ result.description }} </td>
-      </tr>
-        {% endfor %}
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Art</th>
+            <th scope="col">Ihnalt</th>
+            <th scope="col">Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+        <tr>
+          <td> {{ result.name }} </td>
+          <td> {{ result.type }} </td>
+          <td> {{ result.content }} </td>
+            {% if result.description == None %}
+              <td> Nicht Vorhanden </td>
+            {% else %}
+              <td> {{ result.description }} </td>
+            {% endif %}
+        </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
       </table>
       </p>
 {% endblock %}

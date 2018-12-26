@@ -23,7 +23,6 @@ def make_dict(request):
 
 # Routes
 @app.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
@@ -31,7 +30,6 @@ def index():
     return render_template('index.html')
 
 @app.route('/results')
-@login_required
 def search_results(search):
     input = make_dict(request)
     snippets.reindex()
@@ -46,7 +44,7 @@ def search_results(search):
         return redirect('/')
 
     else:
-        return render_template('results.html', results=query, total=total, search=input["search"])
+        return render_template('results.html', results=query, total=total)
 
 @app.route('/new_snippet', methods=['GET', 'POST'])
 @login_required
