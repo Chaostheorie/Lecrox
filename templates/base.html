@@ -26,14 +26,14 @@ Lecrox
       <li class="nav-item">
         <a class="nav-link" href="/">Start <span class="sr-only">(current)</span></a>
       </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown deactivated">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Bibel Lese Pläne
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/plans-info"> Info </a>
                 <div class="dropdown-item">
-                  <form class="form-inline my-2 my-lg-0" method="post">
+                  <form class="form-inline my-2 my-lg-0" action="/" method="post">
                       <input class="form-control mr-sm-2" type="search" placeholder="Suche" aria-label="Suche" name="search">
                       <input type="hidden" id="type" name="type" value="plan">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Los</button>
@@ -42,13 +42,13 @@ Lecrox
               </div>
             </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle deactivated" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Ausschnitte
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/snippets-info"> Info </a>
           <div class="dropdown-item">
-            <form class="form-inline my-2 my-lg-0" method="post">
+            <form class="form-inline my-2 my-lg-0" action="/" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Suche" aria-label="Suche" name="search">
                 <input type="hidden" id="type" name="type" value="snippet">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Los</button>

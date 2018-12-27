@@ -76,8 +76,9 @@ def plans_info():
     return render_template("plans-info.html")
 
 @app.route("/snippets-info")
-def snippets-info():
-    return render_template
+def snippets_info():
+    return render_template("snippets_info.html")
+
 @app.route("/about-me")
 def about_me():
     return render_template("about_me.html")
