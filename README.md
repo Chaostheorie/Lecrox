@@ -1,9 +1,5 @@
 # Lecrox
 
- The Recode version of VKS-Development
-
-- Better organisation
-- search function
-- better documentation
-- cleaner code
-- not a official VKS build or version
+Ein Projekt um Leute zum Glauben zu führen und ihnen mit "Bibelplänen" den
+Anschluss erleichtern sollen und sie dazu bringen söll die Bibel zu lesen.
+Mehr dazu in den Infos auf der Website
