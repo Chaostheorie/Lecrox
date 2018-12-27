@@ -26,6 +26,8 @@ def make_dict(request):
 def index():
     search = SnippetSearchForm(request.form)
     if request.method == 'POST':
+        input = make_dict(request)
+        print(input)
         return search_results(search)
     return render_template('index.html')
 
@@ -34,6 +36,7 @@ def search_results(search):
     input = make_dict(request)
     snippets.reindex()
     results = query, total = snippets.search(input["search"], 1, 100)
+
     if search.data['search'] == '':
         qry = db_session.query(snippets)
         results = qry.all()
@@ -46,19 +49,5 @@ def search_results(search):
     else:
         return render_template('results.html', results=query, total=total)
 
-@app.route('/new_snippet', methods=['GET', 'POST'])
-@login_required
-def new_snippet():
-    form = snippetForms(request.form)
-    if request.method == 'POST' and form.validate():
-        # save the snippet
-
-        flash('Snippet created successfully!')
-        return redirect('/')
-
-    all_types = json.load(open("static/json/types.json", "r"))
-    print(all_types)
-    return render_template('new_snippet.html', types=all_types)
-
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)
