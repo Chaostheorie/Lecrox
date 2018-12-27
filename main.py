@@ -3,14 +3,12 @@ from db_setup import init_db, db_session
 from forms import SnippetSearchForm, snippetForms
 from flask import flash, render_template, request, redirect
 from models import *
-import json
 from flask_user import *
 from search import *
 
 init_db()
 
 # functions
-
 def make_dict(request):
     values = list(request.form.values())
     keys = list(request.form.keys())
@@ -40,14 +38,30 @@ def search_results(search):
     if search.data['search'] == '':
         qry = db_session.query(snippets)
         results = qry.all()
-        return render_template("results.html", results=results, total=len(snippets.query.all()))
+        if len(snippets.query.all()) > 1:
+            text = " Es wurden " + str(len(snippets.query.all())) + " Ergebnisse gefunden:"
+        else:
+            text = "Es wurde" + str(len(snippets.query.all())) + " Ergebniss gefunden: "
+        return render_template("results.html", results=results, total=len(snippets.query.all()), bingo=bingo)
 
     if not results:
         flash('No results found!')
         return redirect('/')
 
     else:
-        return render_template('results.html', results=query, total=total)
+        if results[1] > 1:
+            print(results)
+            text = "Es wurden " + str(total) + " Ergebnisse für den Suchbegriff " + input["search"] + " gefunden:"
+        if results[1] == 1:
+            text = "Es wurde 1 Ergebniss für den Suchbegriff " + input["search"] + "gefunden:"
+        return render_template('results.html', results=query, text=text)
 
+# Errorhandler pages
+@app.errorhandler(404)
+def page_not_found(e):
+	return_url = request.referrer or '/'
+	return render_template("404.html", return_url=return_url), 404
+
+# Run the application
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=False, host="0.0.0.0", port=5000)
