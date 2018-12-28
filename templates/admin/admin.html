@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block app_content %}
+<p>
+The Admin page is for managing the main components of Lecrox.
+</p>
+<p>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Admin tools
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/admin/add_snippet">Neuer Ausschnitt/ Text</a>
+    <a class="dropdown-item" href="/admin/remove_snippet">Ausschnitt/ Text entfernen</a>
+    <a class="dropdown-item" href="/admin/add_user">Neuer Nutzer</a>
+    <a class="dropdown-item" href="/admin/remove_user">Nutzer entfernen</a>
+  </div>
+</div>
+</p>
+{% endblock %}

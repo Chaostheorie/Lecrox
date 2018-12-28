@@ -10,7 +10,7 @@ def add_to_index(index, model):
             payload[field] = getattr(model, field)
         current_app.elasticsearch.index(index=index, doc_type=index, id=model.id,
                                     body=payload)
-
+# Just for the case a thing is not longer supported
 def remove_from_index(index, model):
     with app.app_context():
         if not current_app.elasticsearch:

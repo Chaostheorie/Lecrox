@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block app_content %}
+<form action="/admin/add_snippet" method="post">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input name="name" type="name" class="form-control" id="name" aria-describedby="namehelp" placeholder="Name" required>
+    <small id="nameHelp" class="form-text text-muted">Der Name des Ausschnittes/ Textes</small>
+  </div>
+  <div class="form-group">
+  <label for="type">Art</label>
+  <select class="form-control" id="type" name="type" aria-describedby="typehelp" required>
+    <option>Bibelstelle</option>
+    <option>Psalm</option>
+    <option>Sprichwort</option>
+    <option>Kurzgeschichte</option>
+    <option>Text</option>
+  </select>
+  <small id="typehelp" class="form-text text-muted">Die Art des Auschnittes/ Textes</small>
+  </div>
+
+  <div class="form-group">
+    <label for="content"> Der Ihnalt des Auschnittes/ Textes</label><br>
+    <textarea name="content" id="content" aria-describedby="contenthelp" required rows="8" cols="80" placeholder="Ihnalt"></textarea>
+    <small id="contenthelp" class="form-text text-muted">Der Ihnalt des Ausschnittes/ Textes</small>
+  </div>
+
+  <div class="form-group">
+    <label for="description"> Die Beschreibung des Auschnittes/ Textes</label><br>
+    <input name="description" type="description" class="form-control" id="description" aria-describedby="descriptionhelp" placeholder="Beschreibung" value="">
+    <small id="descriptionhelp" class="form-text text-muted">Die Beschreibung des Ausschnittes/ Textes</small>
+  </div>
+  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+</form>
+{% endblock %}
